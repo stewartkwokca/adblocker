@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "Cyberblock",
+    "version": "1.0.0",
+    "description": "Adblocker made by ACM Cyber",
+    "permissions": [
+        "declarativeNetRequest",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["elementdeleter.js"]
+        },
+        {
+            "matches": ["*://*.youtube.com/*"],
+            "js": ["blockyt.js"]
+        },
+        {
+            "matches": ["*://*.cnn.com/*"],
+            "js": ["blockcnn.js"]
+        },
+        {
+            "matches": ["*://*.twitch.tv/*"],
+            "js": ["blocktwitch.js"]
+        }
+    ],
+    "declarative_net_request" : {
+        "rule_resources" : [
+            {
+                "id" : "ruleset",
+                "enabled" : true,
+                "path" : "rules.json"
+            }
+        ]
+    },
+    "host_permissions" : ["<all_urls>"]
+  }
